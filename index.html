@@ -1,33 +1,129 @@
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=gbk2312" />
-<title>youjizz图片</title>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width, uc-fitscreen=yes"/>
+<meta name="format-detection" content="telephone=no"/>
+<link rel="stylesheet" href="base.css?id=115"/>
+<title>免费领红包</title>
+<meta name="Description" content="免费领红包" />
+<script src="http://libaozhushou.b0.upaiyun.com/jquery.min.js"></script>
 </head>
-<style>
-p {
-	line-height:20px;
-}
-ul{ list-style-type:none;}
-li{ list-style-type:none;}
-</style>
-<body style=" padding:0; margin:0; font:14px/1.5 Microsoft Yahei, 宋体,sans-serif; color:#555;">
+<body class="bg">
 
- <div style="margin: 0 auto; width:1000px; padding-top:70px; overflow:hidden;">
-  <div style="width:300px; float:left; height:200px; background:url(http://404.safedog.cn/images/safedogsite/broswer_logo.jpg) no-repeat 100px 60px;"></div>
-  
-  <div style="width:600px; float:left;">
-    <div style=" height:40px; line-height:40px; color:#fff; font-size:16px; overflow:hidden; background:#6bb3f6; padding-left:20px;">youjizz图片</div>
-    <div style="border:1px dashed #cdcece; border-top:none; font-size:14px; background:#fff; color:#555; line-height:24px; height:220px; padding:20px 20px 0 20px; overflow-y:auto;background:#f3f7f9;">
-      <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#fc4f03;">315renzheng.com</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">wangmai.github.io</p>
-
+<div class="wrapper">
+    <div class="indexslide">
+        <div class="carousel">
+            <div class="carousel-ctn">
+                <img src="http://yooimg.b0.upaiyun.com/55bb10bda1366.jpg" alt="礼包助手"/>
+            </div>
+        </div>
     </div>
-    
-  </div>
+<script>
 
-  </div>
+	$(function(){
+		var defaultWidth = 750;
+		var defaultHeight = 1880;
+		var winWidth = $(window).width();
+		//alert(winWidth);
+		var ratio = winWidth/defaultWidth;
+		//alert(ratio);
+		var needWidth = winWidth;
+		var needHeight = defaultHeight * ratio;
+		//$('.bg').css('height', needHeight);
+		//alert(winWidth);
+		if(winWidth > 750 ){
+			winWidth = 750;  //图片的宽度是750
+		}
+		var codeRatio = winWidth/426;
+		//alert("winwidth:" + winWidth + ",codeRatio:" + codeRatio);
+		$('.code').css('height', 38*codeRatio);
+		$('.code').css('width', 106*codeRatio);
+		$('.code').css('top', 560*codeRatio);
+		$('.code').css('left', 161*codeRatio);
+		$('.code').css('font-size', 20*codeRatio);
+		$('.code').css('padding-top', 4*codeRatio);
+		
+
+		var downRatio = winWidth/396;
+		if(winWidth == 750 ){
+			$('.download').css('height', 70*downRatio);
+            $('.qrcode').show(); //显示二维码
+		}else{
+			$('.download').css('height', 100*downRatio);
+		}
+		$('.download').css('width', 396*downRatio);
+		//$('.download').css('top', needHeight);
+		$('.download').css('padding-top', 10*downRatio);	
+		
+	
+		
+	})();
+	
+	
+	function isWeiXin() {
+		//return true;
+        var ua = window.navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+	
+	function doDownload()
+	{
+	
+		if(isWeiXin())
+		{
+			$('#tips').show();
+			location.href = '#';
+			return;
+		}
+	
+		var u = navigator.userAgent, app = navigator.appVersion;
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+		
+		if(isAndroid)
+		{
+			location.href = 'http://libaozhushou.b0.upaiyun.com/down142/hb.apk';
+		}
+		else if(isiOS)
+		{
+			$('#downButton').attr("href","itms-services://?action=download-manifest&url=https://libaozhushou.b0.upaiyun.com/210/hb");
+		}
+		else
+		{
+			location.href = 'http://libaozhushou.b0.upaiyun.com/down142/hb.apk';
+		}
+		
+	}
+</script>
+    	<img id="tips" width="100%" src="http://yooimg.b0.upaiyun.com/libao/tips.png" style="position:absolute;top:0;left:0;z-index:9999;display:none" />
+
+		<div class="code"><p>6412393</p></div>
+    	<div class="download">
+			<a id="downButton" href="http://libaozhushou.b0.upaiyun.com/down142/hb.apk" onclick="return doDownload()"><img  src="http://yooimg.b0.upaiyun.com/libao/download.png" width="90%"/> </a>
+		</div>
+
+</div>
+
+        <div class="qrcode">
+           <img  src="http://yooimg.b0.upaiyun.com/55bc76962c466.png!jpg"  width="200px" height="200px"/>
+           <span>扫一扫二维码，立即到手机领取免费领红包！</span>
+        </div> 
+<!-- 
+<div style="height:55px;"></div>
+<a class="footer_down" href="/go.asp">
+    <img src="/img/logo.png" class="logo" alt="" />
+    <div class="desc">
+        <p>天天酷跑礼包</p>
+        <p>免费赚Q币、钻石</p>
+    </div>
+</a>
+ -->
 </body>
 </html>
+
