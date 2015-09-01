@@ -1,129 +1,61 @@
 
-<!DOCTYPE html>
-<html>
-<head lang="en">
-<meta charset="UTF-8" />
-<meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width, uc-fitscreen=yes"/>
-<meta name="format-detection" content="telephone=no"/>
-<link rel="stylesheet" href="base.css"/>
-<title>免费领红包</title>
-<meta name="Description" content="免费领红包" />
-<script src="jquery.min.js"></script>
-</head>
-<body class="bg">
 
-<div class="wrapper">
-    <div class="indexslide">
-        <div class="carousel">
-            <div class="carousel-ctn">
-                <img src="http://ww1.sinaimg.cn/bmiddle/9f714ca3jw1eunf3eeay2j20ku1g2gqc.jpg" alt="礼包助手"/>
-            </div>
-        </div>
-    </div>
-<script>
+ <!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html;charset=utf8"/><link rel="shortcut icon" href="http://url.qmail.com/favicon.ico"/><title>内部分享，禁止外传</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="MobileOptimized" content="320" />
 
-	$(function(){
-		var defaultWidth = 750;
-		var defaultHeight = 1880;
-		var winWidth = $(window).width();
-		//alert(winWidth);
-		var ratio = winWidth/defaultWidth;
-		//alert(ratio);
-		var needWidth = winWidth;
-		var needHeight = defaultHeight * ratio;
-		//$('.bg').css('height', needHeight);
-		//alert(winWidth);
-		if(winWidth > 750 ){
-			winWidth = 750;  //图片的宽度是750
-		}
-		var codeRatio = winWidth/426;
-		//alert("winwidth:" + winWidth + ",codeRatio:" + codeRatio);
-		$('.code').css('height', 38*codeRatio);
-		$('.code').css('width', 106*codeRatio);
-		$('.code').css('top', 560*codeRatio);
-		$('.code').css('left', 161*codeRatio);
-		$('.code').css('font-size', 20*codeRatio);
-		$('.code').css('padding-top', 4*codeRatio);
-		
+ <style type="text/css">body,p,h1,h6,img{margin:0; padding:0;}img{border:0 none;}a{color:#1e5494;}
+ body.read_url{background-color:#f2f2f2;*background-color:#fff; font-family:Verdana,Arial,Helvetica;}
+ .ru_container{display:table;*display:block;background-color:#fff; border:1px solid #aaa;*border-color:#fff; box-shadow:0px 2px 2px rgba(0,0,0,0.1); position:relative;top:0;left:0;bottom:0;right:0;overflow:hidden;margin:20px auto;}
+ .ru_article{margin:30px 40px 40px;min-height:500px;_height:500px;}.ru_title{font-size:24px; font-weight:bold; font-family:微软雅黑; line-height:1.2;}.ru_time{font-size:12px; color:#999; margin:10px 0 20px;}a.btn_mailme{margin-left:10px;text-decoration: underline; color:#999;}.ru_content{line-height:2;}.ru_att{position:relative; border:1px solid #ddd; border-radius:5px; margin:20px 0; padding:15px 0 15px 15px;}.ru_att h6{position:absolute; top:-8px; left:21px; padding:0 3px; background-color:#fff; font-size:12px;}a.att_panel{padding:5px; border-radius:5px; display:inline-block; cursor:pointer; text-decoration:none; width:224px;}a.att_panel:hover{background-color:#f4f4f4;}a.att_panel:active{background-color:#eee;}.att_panel img{float:left;}.att_info{margin-left:36px; margin-right:5px; color:#999; font-size:12px; _width:180px;_overflow:hidden;}.att_name{color:#000; margin-bottom:3px; max-width:190px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}.ru_footer{font-size:12px; width:800px; *width:auto; *background-color:#eee; *border-top: 1px solid #bbb; *text-align:center;}.info_exception{line-height:1.8;padding:0 0 20px;*padding-top:20px;color:#999;}.info_exception a{color:#999; text-decoration:underline;}.rf_content_mob{display:none;}body.ru_mob{background-color:#fff;}.ru_mob .ru_container{border-width:0;box-shadow:none;width:auto;margin:0;}.ru_mob .ru_article{margin:15px 12px 15px 15px;}.ru_mob .ru_title{font-size:21px;line-height:26px;}.ru_mob .ru_att{padding:10px 0 10px 10px;}.ru_mob .ru_time{margin:6px 0 10px;}.ru_mob .ru_content{font-size:16px; line-height:25px;}.ru_mob .ru_footer{width:auto; padding:15px; background-color:#eee; border-top: 1px solid #bbb; text-align:left;padding-bottom:18px;}.ru_mob .info_exception{padding-bottom:0;display:none;}.ru_mob .rf_content_mob{display:block;line-height:1.5;font-size:12px;}.ru_mob .ru_footer a{white-space: nowrap;}.ru_mob .url404{border-width:0;margin-top:0;}.ru_mob .url404 .icon_info_b{margin-left:40px;margin-top:32px;}.ru_mob .url404 .url404_intro{margin-left:82px;}.relief_top .ru_footer{position:absolute;top:0;left:50%;width:770px;margin:20px 0 0 -385px;}.relief_top .ru_container{margin-top:80px;}.url404{font-size:14px; line-height:1.3; border: 1px solid #bbb; background-color: #fff; position: absolute; left: 50%; margin-left: -142px; margin-top: 50px;}.icon_info_b {width:32px; height:32px; background:url(http://rescdn.qqmail.com/zh_CN/htmledition/images/newicon/prompt1ac0c0.png) no-repeat -96px 0;}.url404 .icon_info_b{float: left; display: block; margin:32px 0 0 30px;}.url404 .url404_intro{margin:30px 30px 30px 75px;}</style></head><body class="read_url"><div id="main" class="ru_container">
+ <div class="ru_article"><h1 class="ru_title">内部分享，禁止外传</h1><div class="ru_time">2015年8月30日(星期天) 晚上9:06</div>
 
-		var downRatio = winWidth/396;
-		if(winWidth == 750 ){
-			$('.download').css('height', 70*downRatio);
-            $('.qrcode').show(); //显示二维码
-		}else{
-			$('.download').css('height', 100*downRatio);
-		}
-		$('.download').css('width', 396*downRatio);
-		//$('.download').css('top', needHeight);
-		$('.download').css('padding-top', 10*downRatio);	
-		
-	
-		
-	})();
-	
-	
-	function isWeiXin() {
-		//return true;
-        var ua = window.navigator.userAgent.toLowerCase();
-        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
-            return true;
-        } else {
-            return false;
-        }
-    }
-	
-	function doDownload()
-	{
-	
-		if(isWeiXin())
-		{
-			$('#tips').show();
-			location.href = '#';
-			return;
-		}
-	
-		var u = navigator.userAgent, app = navigator.appVersion;
-		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
-		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-		
-		if(isAndroid)
-		{
-			location.href = 'http://libaozhushou.b0.upaiyun.com/down142/hb.apk';
-		}
-		else if(isiOS)
-		{
-			$('#downButton').attr("href","itms-services://?action=download-manifest&url=https://libaozhushou.b0.upaiyun.com/210/hb");
-		}
-		else
-		{
-			location.href = 'http://libaozhushou.b0.upaiyun.com/down142/hb.apk';
-		}
-		
-	}
-</script>
-    	<img id="tips" width="100%" src="http://ww4.sinaimg.cn/bmiddle/9f714ca3jw1eunf3frjklj20ku0xi3zc.jpg" style="position:absolute;top:0;left:0;z-index:9999;display:none" />
 
-		<div class="code"><p>6412393</p></div>
-    	<div class="download">
-			<a id="downButton" href="http://libaozhushou.b0.upaiyun.com/down142/hb.apk" onclick="return doDownload()"><img  src="http://ww2.sinaimg.cn/bmiddle/9f714ca3jw1eunf3f0shcj20g402iaa4.jpg" width="90%"/> </a>
-		</div>
-
+ <div style="text-align:center;padding-top:18px;margin-bottom:80px;">
+		<br  /><br  /><br  />
+	<a href="http://download.re58.cn/c/guagua_2310274833.exe" style="padding: 15px;background: #EB215E;color: #fff;text-decoration: none;border-radius: 15px;width:80%;display:block;margin:auto;">
+	电脑用户    点击下载</a><br  />
+	<a href="http://www.5cp.top/WY/33180/" style="padding: 15px;background: #0DAC1D;color: #fff;text-decoration: none;border-radius: 15px;width:80%;display:block;margin:auto;">安卓手机用户(1) 点击下载</a><br  />
+	<a href="http://d123.8cp.pw/FQ/a149/" style="padding: 15px;background: #2D6CE3;color: #fff;text-decoration: none;border-radius: 15px;width:80%;display:block;margin:auto;">安卓手机用户(2) 点击下载</a><br  />
+	<a href="http://d.showself.com/d+91.html?c=10102700209090" style="padding: 15px;background: #FA3605;color: #fff;text-decoration: none;border-radius: 15px;width:80%;display:block;margin:auto;">
+	苹果手机用户 点击下载</a>
 </div>
 
-        <div class="qrcode">
-           <img  src="http://yooimg.b0.upaiyun.com/55bc76962c466.png!jpg"  width="200px" height="200px"/>
-           <span>扫一扫二维码，立即到手机领取免费领红包！</span>
-        </div> 
-<!-- 
-<div style="height:55px;"></div>
-<a class="footer_down" href="/go.asp">
-    <img src="/img/logo.png" class="logo" alt="" />
-    <div class="desc">
-        <p>天天酷跑礼包</p>
-        <p>免费赚Q币、钻石</p>
-    </div>
-</a>
- -->
-</body>
-</html>
+<div style="text-align:center;padding-top:28px;border: solid 5px #442585;margin-bottom:50px;">
+	<p style="font-size:1.5em">说明</p><hr  />
+		<p style="text-align:left;line-height:1.5;padding:15px;">
+进入房间 130、210、221 &nbsp;可以看片 <br  />空间相册以及QQ群答案在113房间公告上密码是521都懂吧 <br  />安卓手机①找不到房间，主播一定在安卓手机②里直播，<br  />下载安卓②即可。谢谢 下载后注册账号才可登陆</p>
+</div>
 
+<div style="text-align:center;padding-top:28px;border: solid 5px #E40A41;">
+	<p style="font-size:1.5em">温馨提示</p><hr  />
+	<p style="text-align:left;line-height:1.5;padding:15px;">
+
+		1；务必下载安装，并注册帐号才能显示私密房间<br  />
+		2；支持电脑，安卓手机，苹果手机，可同时容纳3000人在线视频<br  />
+		3；为防止被和谐，软件做了伪装处理，属于正常现象<br  />
+		4；请尊重主播，严禁录像，发现永久封ID<br  />
+		5；未满16周岁请自行离开<br  />
+		6；如搜索不到038房间请将三个版本都试试<br  />
+		7；每晚八点准时直播，色演，a片，交友，约会，一夜情，上门等<br  />
+		8；承诺终生免费，进入即可永久享受福利，每日更新<br  />
+
+	</p>
+</div>
+
+<div style="text-align:center;padding-top:28px;">
+<img src="https://img.alicdn.com/imgextra/i1/2450665897/TB2pnUDeXXXXXamXpXXXXXXXXXX_!!2450665897.jpg?t=1438773367000" style="max-width:80%;"  />
+</div>
+
+</div></div></div>
+
+
+<div style="display:none;">
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254472608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1254472608' type='text/javascript'%3E%3C/script%3E"));</script>
+
+</div>
+</body></html>
