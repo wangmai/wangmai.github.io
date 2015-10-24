@@ -1,323 +1,344 @@
 
 <!DOCTYPE html>
-<!-- saved from url=(0051)http://wap.china-district.org/zc.html?jdfwkey=ldvx1 -->
-<html slick-uniqueid="3">
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-
-    <meta name="viewport"
-          content="width=device-width,initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>拉上好友抢现金</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <script type="text/javascript" src="http://wwb.ihubei.net.cn/jiedaibao/index_files/js.js"></script>
-    <link rel="stylesheet" href="http://wwb.ihubei.net.cn/jiedaibao/index_files/css.css">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <meta name="description" content="酷划,帮你赚钱的锁屏">
+    <title>酷划,帮你赚钱的锁屏</title>
+    <link rel="stylesheet" href="http://c1827991961.cchuhang.com/css/neat-min.css"/>
+    <link rel="stylesheet" href="http://c1827991961.cchuhang.com/css/share4-3.css"/>
 </head>
-
-<script src="http://wwb.ihubei.net.cn/jiedaibao/moment.min.js"></script>
-
-<script src="http://wwb.ihubei.net.cn/jiedaibao/js/scroll.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $('.myscroll').myScroll({
-            speed: 40, //数值越大，速度越慢
-            rowHeight: 26 //li的高度
-        });
-    });
-</script>
-
-
-<body class="mhome">
-
-<script type="text/javascript">
-    /*-------------------------------------------*/
-    var InterValObj;
-    var count = 60;
-    var curCount;
-    function sendMessage() {
-        curCount = count;
-        var phone = $("#phone").val();
-        var checkCode = $("#checkCode").val();
-        var geetest_challenge = $(".geetest_challenge").val();
-        var geetest_validate = $(".geetest_validate").val();
-        var geetest_seccode = $(".geetest_seccode").val();
-        if (phone != "") {
-            if (!phone.match(/^(((1[3|4|5|7|8][0-9]{1}))+\d{8})$/)) {
-                errShow("手机号不正确", 1);
-            } else if (phone.match(/^(((1[3|4|5|7|8][0-9]{1}))+\d{8})$/)) {
-
-                $.getJSON("send.php?ac=one&mobile=" + phone, function (data) {
-                    if (data.status == 0) {
-                        $("#btnSendCode").removeAttr("onclick");
-                        $("#btnSendCode").html(curCount + "秒后重试");
-                        InterValObj = window.setInterval(SetRemainTime, 1000);
-                        errShow("验证码发送成功！", 1000);
-                    } else {
-                        errShow(data.message, 1);
-                    }
-                });
-            }
-        } else {
-            errShow("手机号不能为空！", 1);
-        }
-    }
-    //timer处理函数
-    function SetRemainTime() {
-        if (curCount == 0) {
-            window.clearInterval(InterValObj);
-            $("#btnSendCode").attr("onclick", "sendMessage();");
-            //$("#btnSendCode").removeAttr("disabled");
-            $("#btnSendCode").html("重新发送");
-            code = "";
-        } else {
-            curCount--;
-            $("#btnSendCode").html(curCount + "秒后重试");
-            //$("#btnSendCode").val(curCount + "秒后重新获取");
-        }
-    }
-    function send() {
-        var phone = $("#phone").val();
-        var SMSCode = $("#SMSCode").val();
-        if (phone == '') {
-            errShow("手机号不能为空！", 1);
-        } else if (SMSCode == '') {
-            errShow("短信验证码不能为空！", 1);
-        } else {
-            $.getJSON("send.php?ac=two&mobile=" + phone + "&code=" + SMSCode, function (data) {
-                if (data.status == 0) {
-                    //errShow("恭喜您抢到50元现金！", 1);
-                    $(".infoForm").addClass("ng-hide");
-                    $("#getCashStatus").removeClass("ng-hide");
-                    $("#xiazai").removeClass("ng-hide");
-                } else if (data.status == 4) {
-                    $(".infoForm").addClass("ng-hide");
-                    $("#getCashStatus").removeClass("ng-hide");
-                    $("#xiazai").removeClass("ng-hide");
-                } else {
-                    errShow(data.message, 1);
-                }
-            });
-        }
-    }
-</script>
-<style type="text/css">@charset "UTF-8";
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide {
-    display: none !important;
-}
-
-ng\:form {
-    display: block;
-}
-
-.ng-animate-block-transitions {
-    transition: 0s all !important;
-    -webkit-transition: 0s all !important;
-}
-
-.ng-hide-add-active, .ng-hide-remove {
-    display: block !important;
-}
-
-/* 弹出浮层 */
-.pop {
-    position: fixed;
-    left: 50%;
-    top: 40%;
-    width: 70%;
-    box-shadow: 0px 0px 10px #777;
-    -moz-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    padding: 10px;
-    border-radius: 4px;
-    text-align: center;
-    color: #fff;
-    z-index: 1001;
-    letter-spacing: 1px;
-    font-size: 14px;
-    background: rgba(0, 0, 0, .8);
-    word-wrap: break-word;
-    word-break: break-all;
-}
-</style>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
-    .myscroll {
-        width: 300px;
-        height: 160px;
-        margin: 0 auto;
-        line-height: 26px;
-        font-size: 14px;
-        overflow: hidden;
-    }
-
-    .myscroll li {
-        height: 26px;
-        text-align: center;
-        color: #fff;
-    }
-</style>
-
-<div>
-    <div id="content">
-        <div>
-            <div ng-view="" class="ng-scope">
-                <div class="acceptInvitation ng-scope" ng-controller="AcceptinvitationCtrl">
-                    <div class="bg-1">
-                        <img src="http://wwb.ihubei.net.cn/jiedaibao/index_files/bg-01.png" class="bg-img">
-
-                        <div class="infoForm" ng-hide="getCashStatus">
-                            <div class="bottom">恭喜您领到20元现金！请输入手机，马上领取~</div>
-                            <form class="ng-pristine ng-valid">
-                                <div class="form-group">
-                                    <input class="form-control ng-pristine ng-valid" placeholder="请输入你的手机号" type="tel"
-                                           id="phone"></div>
-                                <div class="input-group"><input class="form-control ng-pristine ng-valid"
-                                                                placeholder="请输入验证码" type="tel" id="SMSCode"
-                                                                name="SMSCode">
-
-                                    <div class="input-group-addon ng-binding" id="btnSendCode" onclick="sendMessage()">
-                                        获取验证码
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="top"><img src="http://wwb.ihubei.net.cn/jiedaibao/index_files/15901_60.png"></div>
-                        </div>
-                        <div class="getCashS ng-hide" id="getCashStatus"><img src="http://wwb.ihubei.net.cn/jiedaibao/index_files/25yuan.png">
-
-                            <div class="shadow"><p>恭喜您领到20元现金,注册借贷宝直接提现！</p>
-
-                                <p>注册时请不要修改邀请码，否则没有现金哦！</p></div>
-                        </div>
-                        <a class="inviteFriend2" href="javascript:send();"><img src="http://wwb.ihubei.net.cn/jiedaibao/index_files/btn_cash.png"
-                                                                                class="btnCash"></a>
-                        <a class="inviteFriend2 ng-hide" id="xiazai" href="http://jdb.jiudingcapital.com/download.html"
-                           ng-show="getCashStatus">
-                            <img src="http://wwb.ihubei.net.cn/jiedaibao/index_files/btn_download.png" class="btnCash"></a></div>
-                    <div class="bg-2"><img src="http://wwb.ihubei.net.cn/jiedaibao/index_files/city.png" class="city">
-
-                        <div class="myscroll">
-                            <ul>
-                                <li>
-                                    <script>
-                                        var datetime = moment().format('MM-DD HH:mm:ss');
-                                        document.write(datetime);
-                                    </script>
-                                    苏州网友 131****2231 领到20
-                                </li>
-                                <li>
-                                    <script>
-                                        var datetime = moment().format('MM-DD HH:mm:ss');
-                                        document.write(datetime);
-                                    </script>
-                                    上海网友 132****6432 领到20
-                                </li>
-                                <li>
-                                    <script>
-                                        var datetime = moment().add('minutes', -9).format('MM-DD HH:mm:ss');
-                                        document.write(datetime);
-                                    </script>
-                                    湖北网友 134****1245 领到20
-                                </li>
-                                <li>
-                                    <script>
-                                        var datetime = moment().add('minutes', -8).format('MM-DD HH:mm:ss');
-                                        document.write(datetime);
-                                    </script>
-                                    北京网友 132****1355 领到20
-                                </li>
-                                <li>
-                                    <script>
-                                        var datetime = moment().add('minutes', -7).format('MM-DD HH:mm:ss');
-                                        document.write(datetime);
-                                    </script>
-                                    北京网友 138****3625 领到20
-                                </li>
-                                <li>
-                                    <script>
-                                        var datetime = moment().add('minutes', -6).format('MM-DD HH:mm:ss');
-                                        document.write(datetime);
-                                    </script>
-                                    上海网友 139****1358 领到20
-                                </li>
-                                <li>
-                                    <script>
-                                        var datetime = moment().add('minutes', -5).format('MM-DD HH:mm:ss');
-                                        document.write(datetime);
-                                    </script>
-                                    宁波网友 150****6323 领到20
-                                </li>
-                                <li>
-                                    <script>
-                                        var datetime = moment().add('minutes', -2).format('MM-DD HH:mm:ss');
-                                        document.write(datetime);
-                                    </script>
-                                    宁波网友 150****6323 领到20
-                                </li>
-                                <li>
-                                    <script>
-                                        var datetime = moment().add('minutes', -1).format('MM-DD HH:mm:ss');
-                                        document.write(datetime);
-                                    </script>
-                                    南昌网友 185****4662 领到20
-                                </li>
-                                <br>
-                            </ul>
-                        </div>
-                        <br/>
-                    </div>
-                </div>
-            </div>
-        </div>
+<body>
+<header class="clearfix">
+    <div class="logo pull-left">
+        <img src="images/home_logo_170x170.jpg" alt=""/>
     </div>
-</div>
-<div class="pop pop1" style="display: none;">
-    <p class="error"><br>
-    </p>
-</div>
-<div id="autoLoginHeight"></div>
-<script type="text/javascript">
-    //提示窗口
-    function errShow(content) {
-        $('.error').html(content);
-        $('.pop1').show();
-        setTimeout("errHide()", 3000);
+    <div class="content pull-left">
+        <p class="title"><img src="http://c1827991961.cchuhang.com/images/share_icon.png" alt=""/></p>
+        <p class="word">全球最大的锁屏赚钱APP</p>
+        <p class="word">每天解锁50次，轻松月入几百元</p>
+    </div>
+</header>
+<section class="main">
+    <div class="inviteCode">
+        <p class="title">现在注册，立奖<strong class="red">5元</strong>，请填写我的邀请码</p>
+        <p class="code"><strong class="red" id="invite">80008</strong></p>
+        <p class="button" onclick="downLoadApk()"><span class="word">立即下载，开始赚钱</span></p>
+    </div>
+    <div class="bigpic"><img src="http://c1827991961.cchuhang.com/images/share_background1.jpg" alt=""/></div>
+    <div class="referance">
+        <ul class="sharePage1st">
+            <li class="clearfix">
+                <div class="icon pull-left"></div>
+                <div class="pull-left">
+                    酷划为什么能给我钱呢？
+                </div>
+            </li>
+            <li class="clearfix">
+                <div class="icon pull-left"></div>
+                <div class="pull-left">
+                    酷划是靠广告主给的广告费来吃饭的，而广告主需要的是更多人来看广告。
+                </div>
+            </li>
+            <li class="clearfix">
+                <div class="icon pull-left"></div>
+                <div class="pull-left">
+                    “哦！我明白了！酷划把广告费分给用户，所以解锁就能赚钱~！”
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="homepage"><a class="more" href="http://img.coohua.com">前往官网了解更多<i></i></a></div>
+</section>
+<footer>北京酷划在线网络技术有限公司</footer>
+<div id="cover"></div>
+<script>
+    var clickLogBase = "http://log.coohua.com/domain_click.txt";
+    var downloadHref = "http://app.coohua.com/CooHuaClient-1.9.7.4-share.apk";
+    var channelList = {
+    	cpsh: "http://app.coohua.com/CooHuaClient-1.9.7.4-cpsh.apk",
+        cpqz: "http://app.coohua.com/CooHuaClient-1.9.7.4-cpqz.apk",
+        cpsh5:"http://app.coohua.com/CooHuaClient-1.9.7.4-cpsh5.apk",
+        erweima:"http://app.coohua.com/CooHuaClient-1.9.7.4-erweima.apk",
+		cpqz1:"http://app.coohua.com/CooHuaClient-1.9.7.4-cpqz1.apk",
+        qq:["http://app.coohua.com/CooHuaClient-1.9.8.1-shareqq_Zeus.apk","http://app.coohua.com/CooHuaClient-1.9.7.4-shareqq.apk"],
+        qzone: "http://app.coohua.com/CooHuaClient-1.9.7.4-shareqzone.apk",
+        wechat:['http://app.coohua.com/CooHuaClient-1.9.7.4-sharewechat.apk','http://app.coohua.com/CooHuaClient-1.9.8.1-sharewechat_Zeus.apk'],
+        wechatmoments: "http://app.coohua.com/CooHuaClient-1.9.7.4-sharewxmoment.apk",
+        "l-linyiyidong_singed":"http://app.coohua.com/CooHuaClient-1.9.4.8-l-linyiyidong.apk",
+		sina: "http://app.coohua.com/CooHuaClient-1.9.7.4-shareweibo.apk",
+		tencent_weibo: "http://app.coohua.com/CooHuaClient-1.9.7.4-sharetencentweibo.apk",
+		sms: "http://app.coohua.com/CooHuaClient-1.9.7.4-sharesms.apk",
+		xiaotui:"http://app.coohua.com/CooHuaClient-1.9.5.3-xiaotui.apk",
+		hlj001:"http://app.coohua.com/CooHuaClient-1.9.3.4-hlj001.apk",
+		hljxt101:"http://app.coohua.com/CooHuaClient-1.9.3.7-hljxt101.apk",
+		hljxt102:"http://app.coohua.com/CooHuaClient-1.9.3.7-hljxt102.apk",
+		hljxt103:"http://app.coohua.com/CooHuaClient-1.9.3.7-hljxt103.apk",
+		hljxt104:"http://app.coohua.com/CooHuaClient-1.9.3.7-hljxt104.apk",
+		ynkmxt201:"http://app.coohua.com/CooHuaClient-1.9.3.7-ynkmxt201.apk",
+		h5:"http://app.coohua.com/CooHuaClient-1.9.3.3-h5.apk",
+        "01momo":"http://app.coohua.com/CooHuaClient-1.9.7.7-01momo.apk",
+                "01txxinwen":"http://app.coohua.com/CooHuaClient-1.9.7.4-01txxinwen.apk",
+                "01xinwen":"http://app.coohua.com/CooHuaClient-1.9.7.4-01xinwen.apk",
+                "01shenma":"http://app.coohua.com/CooHuaClient-1.9.7.2-01shenma.apk",
+                "01baidu":"http://app.coohua.com/CooHuaClient-1.9.7.4-01baidu.apk",
+                xyxian2:"http://app.coohua.com/CooHuaClient-1.9.7.6-xyxian2.apk.apk",
+                "01shenma1":"http://app.coohua.com/CooHuaClient-1.9.7.6-01shenma1.apk",
+                 "01shenma2":"http://app.coohua.com/CooHuaClient-1.9.7.6-01shenma2.apk",
+                 "01shenma3":"http://app.coohua.com/CooHuaClient-1.9.7.6-01shenma3.apk",
+                 "01shenma4":"http://app.coohua.com/CooHuaClient-1.9.7.6-01shenma4.apk",
+                 "01shenma5":"http://app.coohua.com/CooHuaClient-1.9.7.6-01shenma5.apk",
+                 "01hui":"http://app.coohua.com/CooHuaClient-1.9.7.7-01hui.apk",
+                 "01hong":"http://app.coohua.com/CooHuaClient-1.9.7.7-01hong.apk",
+                 "01shenmahong":"http://app.coohua.com/CooHuaClient-1.9.7.7-01shenmahong.apk",
+                 "01shenmahui":"http://app.coohua.com/CooHuaClient-1.9.7.7-01shenmahui.apk",
+                shanghaizhanhui:"http://app.coohua.com/CooHuaClient-1.9.5.0-shanghaizhanhui.apk",
+		weibobowenl:"http://app.coohua.com/CooHuaClient-1.9.3.9-weibobowenl.apk",
+		xiaoyuan1:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan1.apk",
+		xiaoyuan2:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan2.apk",
+		xiaoyuan3:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan3.apk",
+		xiaoyuan4:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan4.apk",
+		xiaoyuan5:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan5.apk",
+		xiaoyuan6:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan6.apk",
+		xiaoyuan7:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan7.apk",
+		xiaoyuan8:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan8.apk",
+		xiaoyuan9:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan9.apk",
+		xiaoyuan10:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan10.apk",
+		xiaoyuan11:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan11.apk",
+		xiaoyuan12:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan12.apk",
+		xiaoyuan13:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan13.apk",
+		xiaoyuan14:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan14.apk",
+		xiaoyuan15:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan15.apk",
+		xiaoyuan16:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan16.apk",
+		xiaoyuan17:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan17.apk",
+		xiaoyuan18:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan18.apk",
+		xiaoyuan19:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan19.apk",
+		xiaoyuan20:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan20.apk",
+		xiaoyuan21:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan21.apk",
+		xiaoyuan22:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan22.apk",
+		xiaoyuan23:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan23.apk",
+		xiaoyuan24:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan24.apk",
+		xiaoyuan25:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan25.apk",
+		xiaoyuan26:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan26.apk",
+		xiaoyuan27:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan27.apk",
+		xiaoyuan28:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan28.apk",
+		xiaoyuan29:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan29.apk",
+		xiaoyuan30:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan30.apk",
+		xiaoyuan31:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan31.apk",
+		xiaoyuan32:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan32.apk",
+		xiaoyuan33:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan33.apk",
+		xiaoyuan34:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan34.apk",
+		xiaoyuan35:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan35.apk",
+		xiaoyuan36:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan36.apk",
+		xiaoyuan37:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan37.apk",
+		xiaoyuan38:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan38.apk",
+		xiaoyuan39:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan39.apk",
+		xiaoyuan40:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan40.apk",
+		xiaoyuan41:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan41.apk",
+		xiaoyuan42:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan42.apk",
+		xiaoyuan43:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan43.apk",
+		xiaoyuan44:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan44.apk",
+		xiaoyuan45:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan45.apk",
+		xiaoyuan46:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan46.apk",
+		xiaoyuan47:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan47.apk",
+		xiaoyuan48:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan48.apk",
+		xiaoyuan49:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan49.apk",
+		xiaoyuan50:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan50.apk",
+		xiaoyuan51:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan51.apk",
+		xiaoyuan52:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan52.apk",
+		xiaoyuan53:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan53.apk",
+		xiaoyuan54:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan54.apk",
+		xiaoyuan55:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan55.apk",
+		xiaoyuan56:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan56.apk",
+		xiaoyuan57:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan57.apk",
+		xiaoyuan58:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan58.apk",
+		xiaoyuan59:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan59.apk",
+		xiaoyuan60:"http://app.coohua.com/CooHuaClient-1.9.3.9-xiaoyuan60.apk",
+        appzhanhui:"http://app.coohua.com/CooHuaClient-1.9.4.8-appzhanhui.apk",
+		xianxiaoyuan1:"http://app.coohua.com/CooHuaClient-1.9.3.9-xianxiaoyuan1.apk",
+		sdlycm01:"http://app.coohua.com/CooHuaClient-1.9.3.9-sdlycm01.apk",
+		webqrcode:"http://app.coohua.com/CooHuaClient.apk",
+        test:['http://app.coohua.com/test-a.apk','http://app.coohua.com/test-b.apk']
+    };
+
+    var mask = document.getElementById("cover");
+    mask.addEventListener('click', function () {
+        this.style.display = 'none';
+    },false);
+
+    function downLoadApk() {
+        remoteLog(clickLogBase + window.location.search);
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+            // var mask = document.getElementById("arrowMask");
+            //var mask = document.getElementById("cover");
+            if (mask) {
+                document.getElementById('cover').style.display = 'block';
+                //mask.className = "modal active";
+                //setTimeout(function () {
+                    //document.getElementById('cover').style.display = 'none';
+                    //mask.className = "modal";
+                //}, 2000);
+            }
+            return;
+        }
+        location.href = downloadHref;
     }
 
-    //隐藏错误提示
-    function errHide() {
-        $('.pop1').hide();
-        $('.error').text('');
-        $("#error").html('');
-        ;
+    function getParam(url, param) {
+        var r = new RegExp("\\?(?:.+&)?" + param + "=(.*?)(?:[\?&].*)?$");
+        var m = url.match(r);
+        return m ? m[1] : "";
     }
 
-    //登陆提示
-    function loginShow(content) {
-        $('.error').html(content);
-        $('.pop1').show();
+    var unique = (function () {
+        var time = (new Date()).getTime() + '-', i = 0;
+        return function () {
+            return time + (i++);
+        }
+    })();
+
+    var remoteLog = function (url) {
+        var img = new Image();
+        var uid = unique();
+        img.onload = img.onerror = (function (img) {//销毁一些对象
+            return function () {
+                img.onload = img.onerror = null;
+                delete img;
+            };
+        })(img);
+        if (url.indexOf("?") == -1) {
+            url += '?_uid=' + uid
+        } else {
+            url += '&_uid=' + uid
+        }
+        img.src = url;
+    };
+    //取得cookie
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');    //把cookie分割成组
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];                      //取得字符串
+            while (c.charAt(0) == ' ') {          //判断一下字符串有没有前导空格
+                c = c.substring(1, c.length);      //有的话，从第二位开始取
+            }
+            if (c.indexOf(nameEQ) == 0) {       //如果含有我们要的name
+                return unescape(c.substring(nameEQ.length, c.length));    //解码并截取我们要值
+            }
+        }
+        return false;
     }
 
-    //点击关闭错误提示
-    $('.pop1').on('click', function () {
-        errHide();
-    })
+    //清除cookie
+    function clearCookie(name) {
+        setCookie(name, "", -1);
+    }
+
+    //设置cookie
+    function setCookie(name, value, seconds) {
+        seconds = seconds || 0;   //seconds有值就直接赋值，没有为0，这个根php不一样。
+        var expires = "";
+        if (seconds != 0) {      //设置cookie生存时间
+            var date = new Date();
+            date.setTime(date.getTime() + (seconds * 1000));
+            expires = "; expires=" + date.toGMTString();
+        }
+        document.cookie = name + "=" + escape(value) + expires + "; path=/";   //转码并赋值
+    }
+
+    function uuid(len, radix) {
+        var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+        var uuid = [], i;
+        radix = radix || chars.length;
+        if (len) {
+            // Compact form
+            for (i = 0; i < len; i++) uuid[i] = chars[0 | Math.random() * radix];
+        } else {
+            // rfc4122, version 4 form
+            var r;
+
+            // rfc4122 requires these characters
+            uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
+            uuid[14] = '4';
+
+            // Fill in random data.  At i==19 set the high bits of clock sequence as
+            // per rfc4122, sec. 4.1.5
+            for (i = 0; i < 36; i++) {
+                if (!uuid[i]) {
+                    r = 0 | Math.random() * 16;
+                    uuid[i] = chars[(i == 19) ? (r & 0x3) | 0x8 : r];
+                }
+            }
+        }
+
+        return uuid.join('');
+    }
+
+
+    function dateFormat(date, format) {
+        if (format === undefined) {
+            format = date;
+            date = new Date();
+        }
+        var map = {
+            "M": date.getMonth() + 1, //月份
+            "d": date.getDate(), //日
+            "h": date.getHours(), //小时
+            "m": date.getMinutes(), //分
+            "s": date.getSeconds(), //秒
+            "q": Math.floor((date.getMonth() + 3) / 3), //季度
+            "S": date.getMilliseconds() //毫秒
+        };
+        format = format.replace(/([yMdhmsqS])+/g, function (all, t) {
+            var v = map[t];
+            if (v !== undefined) {
+                if (all.length > 1) {
+                    v = '0' + v;
+                    v = v.substr(v.length - 2);
+                }
+                return v;
+            }
+            else if (t === 'y') {
+                return (date.getFullYear() + '').substr(4 - all.length);
+            }
+            return all;
+        });
+        return format;
+    }
+
+    (function loaded() {
+        var url = window.location.href;
+        var idPattern = /src=(\d*)/i;
+        if (idPattern.test(url)) {
+            var ele = document.getElementById('invite');
+            if (ele) {
+                ele.innerHTML = url.match(idPattern)[1];
+            }
+        }
+
+        var getRandomDownloadUrl = function (arr) {
+            var date = Math.floor(Math.random() * (9999999 - 1000000) + 1000000);
+            var len = arr.length;
+            var i = date % len;
+            return arr[i];
+        };
+        if (channelList) {
+            var ch = channelList[getParam(url, "ch")];
+            if(ch){
+                if (ch instanceof Array) {
+                    downloadHref = getRandomDownloadUrl(ch);
+                } else {
+                    downloadHref = ch;
+                }
+            }
+        }
+        if (!getCookie('coohua_session_id')) {
+            setCookie("coohua_session_id", dateFormat(new Date(), 'yyyy-MM-dd') + "-" + uuid(8, 16), 3600 * 24 * 365);
+        }
+    })();
 
 </script>
-
-
-<div style="display:none">
-    版权所有:华蓥市家家乐物业管理有限公司
-
-    <script language="javascript" type="text/javascript" src="http://js.users.51.la/18639846.js"></script>
-    <noscript><a href="http://www.51.la/?18639846" target="_blank"><img
-            alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/18639846.asp"
-            style="border:none"/></a></noscript>
-</div>
 </body>
 </html>
